@@ -4,7 +4,7 @@ Takes in three colleges (Dream, Target, Safety)
 Returns matches from rec model
 '''
 
-from flask import Flask, request, redirect, url_for, render_template, send_from_directory, send_file, \
+from flask import Flask, jsonify, request, redirect, url_for, render_template, send_from_directory, send_file, \
     get_template_attribute, session
 #from flask_session import Session
 from werkzeug.utils import secure_filename
@@ -22,9 +22,16 @@ import random
 
 app = Flask(__name__, static_url_path="/static")
 
-@app.route('/', methods=['GET', 'POST'])
-def index():
-    return {'University of Michigan':100, 'University of Illinois':88, 'DePaul University':82}
+
+
+@app.route('/')
+def matches():
+    return jsonify({'University of Michigan':100,
+                    'University of Illinois':88,
+                    'DePaul University':82})
+
+
+
 
 
 if __name__ == '__main__':
