@@ -24,7 +24,7 @@ app = Flask(__name__)
 
 
 # return the output of our rec model
-@app.route('/model/',  methods=['POST'])
+@app.route('/model/',  methods=['GET'])
 def model():
     return jsonify({'University of Michigan':100,
                     'University of Illinois':88,
@@ -38,6 +38,6 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(threaded=True, port=3000)
 
 
