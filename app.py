@@ -23,12 +23,18 @@ import random
 app = Flask(__name__, static_url_path="/static")
 
 
-@app.route('/')
-def matches():
+# return the output of our rec model
+@app.route('/model/')
+def model():
     return jsonify({'University of Michigan':100,
                     'University of Illinois':88,
                     'DePaul University':82})
 
+
+# A welcome message to test our server
+@app.route('/')
+def index():
+    return "<h1>Welcome to our server !!</h1>"
 
 
 if __name__ == '__main__':
