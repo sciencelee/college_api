@@ -20,11 +20,11 @@ import random
 #model = load_model(best_model)  # college rec model
 #
 
-app = Flask(__name__, static_url_path="/static")
+app = Flask(__name__)
 
 
 # return the output of our rec model
-@app.route('/model/')
+@app.route('/model/',  methods=['POST'])
 def model():
     return jsonify({'University of Michigan':100,
                     'University of Illinois':88,
