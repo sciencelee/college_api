@@ -24,11 +24,11 @@ app = Flask(__name__)
 
 
 # return the output of our rec model
-@app.route('/model/',  methods=['GET'])
-def model():
-    return jsonify({'University of Michigan':100,
-                    'University of Illinois':88,
-                    'DePaul University':82})
+# @app.route('/model/',  methods=['GET'])
+# def model():
+#     return jsonify({'University of Michigan':100,
+#                     'University of Illinois':88,
+#                     'DePaul University':82})
 
 
 # A welcome message to test our server
