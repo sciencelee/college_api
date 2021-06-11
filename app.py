@@ -21,7 +21,7 @@ import random
 
 app = Flask(__name__, static_url_path="/static")
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index(colleges):
     return {'University of Michigan':100, 'University of Illinois':88, 'DePaul University':82}
 
