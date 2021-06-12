@@ -1,4 +1,4 @@
-import pandas as pd
+#import pandas as pd
 from flask import Flask, jsonify, request
 
 # load model
