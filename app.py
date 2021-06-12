@@ -10,7 +10,7 @@ app = Flask(__name__)
 @app.route('/model/', methods=['POST', 'GET'])
 def predict():
     # get data
-    #data = request.get_json(force=True)
+    data = request.get_json()
 
     # convert data into dataframe
     # data.update((x, [y]) for x, y in data.items())
@@ -20,11 +20,15 @@ def predict():
     # result = model.predict(data_df)
 
     # send back to browser
-    # output = {'results': int(result[0])}
+    output = {'results': data}
 
+    return jsonify(output)
+    #return jsonify({'University of Michigan':90, 'University of Illinois':80, 'DePaul University': 70})
 
-    # return data
-    return jsonify({'University of Michigan':90, 'University of Illinois':80, 'DePaul University': 70})
+# def add_message(uuid):
+#     content = request.json
+#     print content['mytext']
+#     return jsonify({"uuid":uuid})
 
 
 # A welcome message to test our server
