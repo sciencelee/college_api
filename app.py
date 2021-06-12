@@ -11,6 +11,7 @@ app = Flask(__name__)
 def predict():
     # get data
     data = request.get_json()
+    dream = data['dream']
 
     # convert data into dataframe
     # data.update((x, [y]) for x, y in data.items())
@@ -20,7 +21,7 @@ def predict():
     # result = model.predict(data_df)
 
     # send back to browser
-    output = {'results': data}
+    output = {'results': data, 'dream':dream}
 
     return jsonify(output)
     #return jsonify({'University of Michigan':90, 'University of Illinois':80, 'DePaul University': 70})
