@@ -23,19 +23,18 @@ app = Flask(__name__)
 @app.route('/model/', methods=['POST', 'GET'])
 def predict():
     # get data
-    data = request.get_json()
-    # dream = data['dream']
-    # target = data['target']
-    # safety = data['safety']
+    data = request.get_json()[0]
+    dream = data['dream']
+    target = data['target']
+    safety = data['safety']
 
 
     results = {'results': data}
 
-    #output = [{'dream':dream, 'target':target, 'safety':'Ohio State'}]
-    #print(output)
+    output = [{'dream':dream, 'target':target, 'safety':'Ohio State'}]
+    print(output)
 
-    return jsonify(results)
-    #return jsonify({'University of Michigan':90, 'University of Illinois':80, 'DePaul University': 70})
+    return jsonify(output)
 
 
 
