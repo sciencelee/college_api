@@ -1,43 +1,36 @@
-'''
-Flask web app to host college recommendation model
-Takes in three colleges (Dream, Target, Safety)
-Returns matches from rec model
-'''
+import pandas as pd
+from flask import Flask, jsonify, request
 
-from flask import Flask, jsonify, request, redirect, url_for, render_template, send_from_directory, send_file, \
-    get_template_attribute, session
-#from flask_session import Session
-from werkzeug.utils import secure_filename
-#import numpy as np
-#from keras.applications.vgg16 import VGG16, preprocess_input, decode_predictions
-#from keras.preprocessing import image
-#from keras.models import load_model
-#import os, io, sys, time
-import random
-
-
-#best_model = 'best_model.h5'
-#model = load_model(best_model)  # college rec model
-###
+# load model
+#model = ????
 
 app = Flask(__name__)
 
+# routes
+@app.route('/model/', methods=['POST', 'GET'])
+def predict():
+    # get data
+    #data = request.get_json(force=True)
 
-# return the output of our rec model
-# @app.route('/model/',  methods=['GET'])
-# def model():
-#     return jsonify({'University of Michigan':100,
-#                     'University of Illinois':88,
-#                     'DePaul University':82})
+    # convert data into dataframe
+    # data.update((x, [y]) for x, y in data.items())
+    # data_df = pd.DataFrame.from_dict(data)
+
+    # predictions
+    # result = model.predict(data_df)
+
+    # send back to browser
+    # output = {'results': int(result[0])}
+
+
+    # return data
+    return jsonify({'University of Michigan':90, 'University of Illinois':80, 'DePaul University': 70})
 
 
 # A welcome message to test our server
 @app.route('/')
 def index():
-    return "<h1>Welcome to our server !!</h1>"
-
+    return "<h1>College rec server</h1>"
 
 if __name__ == '__main__':
-    app.run(threaded=True, port=3000)
-
-
+    app.run(debug=True, port=3000)
