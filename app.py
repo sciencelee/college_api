@@ -31,7 +31,7 @@ def predict():
 
     results = {'results': data}
 
-    output = [{'dream':dream, 'target':target, 'safety':'Ohio State'}]
+    output = [{dream:97, target:80, 'Ohio State':68}]
     print(output)
 
     return jsonify(output)
