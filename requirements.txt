@@ -1,8 +1,7 @@
-Flask==1.1.2
-keras
+Flask==1.1.1
 numpy==1.18.5
 Werkzeug==1.0.1
 requests
 tensorflow==2.3.1
 h5py==2.10
-Flask-Session
+gunicorn==19.9.0
