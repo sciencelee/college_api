@@ -1,5 +1,5 @@
 #import pandas as pd
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, make_response
 import json
 import pickle
 import scipy.spatial.distance as distance
@@ -9,7 +9,8 @@ from flask_cors import CORS, cross_origin
 
 # create app
 app = Flask(__name__, static_folder='static')
-cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
+#cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
+CORS(app)
 
 # load "model" data
 df_final = pickle.load(open('static/df_final_names.pkl', 'rb'))
@@ -59,6 +60,8 @@ def predict():
         output['results'].append(school)
     response = jsonify(output)
     response.headers.add("Access-Control-Allow-Origin", "*")
+    response.headers.add("Access-Control-Allow-Headers", "*")
+    response.headers.add("Access-Control-Allow-Methods", "*")
 
     return response
 
@@ -81,7 +84,12 @@ def get_index(college):
     college_id = college_id.index.to_list()[0]
     return int(college_id)
 
-
+def _build_cors_prelight_response():
+    response = make_response()
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    response.headers.add('Access-Control-Allow-Headers', "*")
+    response.headers.add('Access-Control-Allow-Methods', "*")
+    return response
 
 
 
