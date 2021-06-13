@@ -19,7 +19,7 @@ df_scaled = pickle.load(open('static/scaled_df.pkl', 'rb'))
 
 
 # routes
-@app.route('/model/', methods=['POST', 'GET'])
+@app.route('/model/', methods=['POST'])
 @flask_cors.cross_origin()
 def predict():
     # get data
