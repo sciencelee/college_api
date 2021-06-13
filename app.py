@@ -4,13 +4,14 @@ import json
 import pickle
 import scipy.spatial.distance as distance
 import json
-from flask_cors import CORS, cross_origin
-
+import flask_cors
 
 # create app
 app = Flask(__name__, static_folder='static')
 #cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
-CORS(app)
+cors = flask_cors.CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
+
 
 # load "model" data
 df_final = pickle.load(open('static/df_final_names.pkl', 'rb'))
@@ -19,7 +20,7 @@ df_scaled = pickle.load(open('static/scaled_df.pkl', 'rb'))
 
 # routes
 @app.route('/model/', methods=['POST', 'GET'])
-@cross_origin()
+@flask_cors.cross_origin()
 def predict():
     # get data
     data = request.get_json()[0]
@@ -59,9 +60,9 @@ def predict():
 
         output['results'].append(school)
     response = jsonify(output)
-    response.headers.add("Access-Control-Allow-Origin", "*")
-    response.headers.add("Access-Control-Allow-Headers", "*")
-    response.headers.add("Access-Control-Allow-Methods", "*")
+    # response.headers.add("Access-Control-Allow-Origin", "*")
+    # response.headers.add("Access-Control-Allow-Headers", "*")
+    # response.headers.add("Access-Control-Allow-Methods", "*")
 
     return response
 
