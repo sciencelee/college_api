@@ -4,11 +4,9 @@ import json
 import pickle
 import scipy.spatial.distance as distance
 import json
-from flask_cors import CORS
 
 # create app
 app = Flask(__name__, static_folder='static')
-CORS(app) # This will enable CORS for all routes
 
 
 # load "model" data
@@ -56,6 +54,8 @@ def predict():
                 }
 
         output['results'].append(school)
+    #response = jsonify(output)
+    #response.headers.add("Access-Control-Allow-Origin", "*")
 
     return jsonify(output)
 
