@@ -1,6 +1,5 @@
 #import pandas as pd
 from flask import Flask, jsonify, request
-import pandas as pd
 import json
 
 # load model
@@ -19,7 +18,7 @@ import json
 
 
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 
 
 
@@ -35,14 +34,16 @@ def predict():
 
     results = {'results': data}
 
-    output = [{dream:97, target:80, 'Ohio State':68}]
+    output = [{dream:97, target:80, 'Ohio State University':68}]
     print(output)
 
     return jsonify(output)
 
-@app.route('/colleges/', methods=['POST', 'GET'])
+@app.route('/colleges/', methods=['POST'])
 def colleges():
-    return json.load('colleges.txt')
+    with open('static/colleges.txt') as json_file:
+        data = json.load(json_file)
+    return data
 
 
 
