@@ -3,16 +3,13 @@ from flask import Flask, jsonify, request
 import json
 import pickle
 import scipy.spatial.distance as distance
-#import flask_cors
 import json
-
+from flask_cors import CORS
 
 # create app
 app = Flask(__name__, static_folder='static')
-#cors = flask_cors.CORS(app)
-#app.config['CORS_HEADERS'] = 'Content-Type'
-#cors = CORS(app, resources={r"/api/": {"origins": ""}})
-#CORS(app)
+CORS(app) # This will enable CORS for all routes
+
 
 # load "model" data
 df_final = pickle.load(open('static/df_final_names.pkl', 'rb'))
