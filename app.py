@@ -64,7 +64,7 @@ def predict():
     response.headers.add("Access-Control-Allow-Headers", "*")
     response.headers.add("Access-Control-Allow-Methods", "*")
 
-    return response
+    return jsonify(response)
 
 
 @app.route('/colleges/', methods=['GET'])
