@@ -63,7 +63,7 @@ def predict():
 
         output['results'].append(school)
 
-    return jsonify(output)
+    return _build_cors_prelight_response(jsonify(output))
 
 
 @app.route('/colleges/', methods=['GET'])
@@ -84,8 +84,8 @@ def get_index(college):
     college_id = college_id.index.to_list()[0]
     return int(college_id)
 
-def _build_cors_prelight_response():
-    response = make_response()
+def _build_cors_prelight_response(output):
+    response = make_response(output)
     response.headers.add("Access-Control-Allow-Origin", "*")
     response.headers.add("Access-Control-Allow-Headers", "*")
     response.headers.add("Access-Control-Allow-Methods", "*")
