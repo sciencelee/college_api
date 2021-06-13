@@ -1,5 +1,7 @@
 #import pandas as pd
 from flask import Flask, jsonify, request
+import pandas as pd
+import json
 
 # load model
 #model = ????
@@ -19,6 +21,8 @@ from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
+
+
 # routes
 @app.route('/model/', methods=['POST', 'GET'])
 def predict():
@@ -35,6 +39,10 @@ def predict():
     print(output)
 
     return jsonify(output)
+
+@app.route('/colleges/', methods=['POST', 'GET'])
+def colleges():
+    return json.load('colleges.txt')
 
 
 

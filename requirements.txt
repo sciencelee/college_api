@@ -1,2 +1,5 @@
-Flask==1.1.1
+Flask~=2.0.1
 gunicorn==19.9.0
+pandas~=1.1.5
+json
+requests~=2.25.1
