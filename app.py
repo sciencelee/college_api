@@ -3,23 +3,20 @@ from flask import Flask, jsonify, request
 import json
 import pickle
 import scipy.spatial.distance as distance
-import sys
-import flask_cors
+#import flask_cors
+import json
+
 
 # create app
 app = Flask(__name__, static_folder='static')
-cors = flask_cors.CORS(app)
+#cors = flask_cors.CORS(app)
 #app.config['CORS_HEADERS'] = 'Content-Type'
 #cors = CORS(app, resources={r"/api/": {"origins": ""}})
 #CORS(app)
 
 # load "model" data
-import pandas as pd
-import json
 df_final = pickle.load(open('static/df_final_names.pkl', 'rb'))
 df_scaled = pickle.load(open('static/scaled_df.pkl', 'rb'))
-
-#app.logger.warning('testing warning log')
 
 
 # routes
@@ -49,7 +46,6 @@ def predict():
 
     for college in result:
         i = get_index(college)
-        school = {}
         stats = df_final.iloc[i]
         school = {
                 'schoolname': stats['INSTNM'],

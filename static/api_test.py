@@ -11,16 +11,16 @@ school_data = [
     },
 ]
 
-url = 'https://college-rec-system.herokuapp.com/model/'
-#url = 'http://127.0.0.1:5000/model/'
+#url = 'https://college-rec-system.herokuapp.com/model/'
+url = 'http://127.0.0.1:5000/model/'
 
 data = requests.post(url, json=school_data)
 print(data.text)
 
-# url2 = 'https://college-rec-system.herokuapp.com/colleges/'
-# url2 = 'http://127.0.0.1:5000/colleges/'
-# colleges = requests.get(url2)
-# print(colleges.text)
+url2 = 'https://college-rec-system.herokuapp.com/colleges/'
+url2 = 'http://127.0.0.1:5000/colleges/'
+colleges = requests.get(url2)
+print(colleges.text)
 #
 # url3 = 'https://college-rec-system.herokuapp.com/'
 # url3 = 'http://127.0.0.1:5000/'
