@@ -54,10 +54,10 @@ def predict():
                 }
 
         output['results'].append(school)
-    #response = jsonify(output)
-    #response.headers.add("Access-Control-Allow-Origin", "*")
+    response = jsonify(output)
+    response.headers.add("Access-Control-Allow-Origin", "*")
 
-    return jsonify(output)
+    return response
 
 
 @app.route('/colleges/', methods=['GET'])
