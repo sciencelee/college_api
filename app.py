@@ -2,24 +2,7 @@
 from flask import Flask, jsonify, request
 import json
 
-# load model
-#model = ????
-# dream = data['dream']
-
-# convert data into dataframe
-# data.update((x, [y]) for x, y in data.items())
-# data_df = pd.DataFrame.from_dict(data)
-
-# predictions
-# result = model.predict(data_df)
-
-# send back to browser
-
-
-
-
 app = Flask(__name__, static_folder='static')
-
 
 
 # routes
@@ -39,7 +22,7 @@ def predict():
 
     return jsonify(output)
 
-@app.route('/colleges/', methods=['POST'])
+@app.route('/colleges/', methods=['GET'])
 def colleges():
     with open('static/colleges.txt') as json_file:
         data = json.load(json_file)
