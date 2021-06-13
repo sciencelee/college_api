@@ -8,9 +8,9 @@ import flask_cors
 
 # create app
 app = Flask(__name__, static_folder='static')
-#cors = flask_cors.CORS(app, resources={r"/api/*": {"origins": "*"}})
+cors = flask_cors.CORS(app, resources={r"/api/*": {"origins": "*"}})
 #cors = flask_cors.CORS(app)
-app.config['CORS_HEADERS'] = 'Content-Type'
+#app.config['CORS_HEADERS'] = 'Content-Type'
 
 
 # load "model" data
@@ -19,10 +19,11 @@ df_scaled = pickle.load(open('static/scaled_df.pkl', 'rb'))
 
 
 # routes
-@app.route('/model/', methods=['POST'])
+@app.route('/model/', methods=['POST', 'OPTIONS'])
 @flask_cors.cross_origin()
 def predict():
-
+    if request.method == "OPTIONS":  # CORS preflight
+        return _build_cors_prelight_response()
 
     # get data
     data = request.get_json()[0]
@@ -61,11 +62,8 @@ def predict():
                 }
 
         output['results'].append(school)
-    response = make_response(jsonify(output))
-    response.headers.add("Access-Control-Allow-Origin", "*")
-    response.headers.add("Access-Control-Allow-Headers", "*")
-    response.headers.add("Access-Control-Allow-Methods", "*")
-    return response
+
+    return jsonify(output)
 
 
 @app.route('/colleges/', methods=['GET'])
