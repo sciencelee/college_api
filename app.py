@@ -9,7 +9,7 @@ from flask_cors import CORS, cross_origin
 
 # create app
 app = Flask(__name__, static_folder='static')
-#CORS(app)
+cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 # load "model" data
 df_final = pickle.load(open('static/df_final_names.pkl', 'rb'))
