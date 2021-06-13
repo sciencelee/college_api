@@ -41,7 +41,7 @@ def predict():
         closest = list(closest['INSTNM'][1:5])
         closest_list += closest
 
-    result = top_five(closest_list)
+    result = top_five(closest_list, colleges)
 
     output = {}
     output['results'] = []
@@ -73,7 +73,8 @@ def colleges():
     return data
 
 
-def top_five(all3):
+def top_five(all3, original):
+    all3 = [x for x in all3 if x not in original]
     my_counts = sorted([[x, all3.count(x)] for x in set(all3)], key=lambda x: x[1])
     top_five = [x[0] for x in my_counts][:5]
     return top_five
