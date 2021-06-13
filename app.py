@@ -8,8 +8,8 @@ import flask_cors
 
 # create app
 app = Flask(__name__, static_folder='static')
-#cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
-cors = flask_cors.CORS(app)
+cors = flask_cors.CORS(app, resources={r"/api/*": {"origins": "*"}})
+#cors = flask_cors.CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 

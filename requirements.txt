@@ -3,4 +3,4 @@ gunicorn==19.9.0
 pandas~=1.1.5
 requests~=2.25.1
 scipy~=1.6.3
-flask_cors
+Flask-Cors==3.0.7
