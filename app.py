@@ -22,8 +22,8 @@ df_scaled = pickle.load(open('static/scaled_df.pkl', 'rb'))
 @app.route('/model/', methods=['POST', 'OPTIONS'])
 @flask_cors.cross_origin()
 def predict():
-    # if request.method == "OPTIONS":  # CORS preflight
-    #     return _build_cors_prelight_response()
+    if request.method == "OPTIONS":  # CORS preflight
+        return _build_cors_prelight_response()
 
     # get data
     data = request.get_json()[0]
