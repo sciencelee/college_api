@@ -1,6 +1,8 @@
 import requests
 import json
 
+
+
 school_data = [
     {
         'dream':'Loyola University Chicago',

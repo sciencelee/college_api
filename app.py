@@ -3,10 +3,8 @@ from flask import Flask, jsonify, request
 import json
 import pickle
 import scipy.spatial.distance as distance
-from collections import Counter
 import sys
-from flask_cors import CORS, cross_origin
-
+import flask_cors
 
 
 # create app
@@ -15,7 +13,6 @@ cors = CORS(app)
 #app.config['CORS_HEADERS'] = 'Content-Type'
 #cors = CORS(app, resources={r"/api/": {"origins": ""}})
 #CORS(app)
-
 
 # load "model" data
 import pandas as pd
@@ -38,12 +35,12 @@ def predict():
         college_id = get_index(college)
         test_college = df_scaled.iloc[[college_id]]
 
-        ary = distance.cdist(df_scaled, test_college, metric='minkowski')
+        ary = distance.cdist(df_scaled, test_college, metric='euclidean')
 
         results = df_final.copy() # different results
         results['dist'] = ary
         closest = results.sort_values(by='dist')
-        closest = list(closest['INSTNM'][1:4])
+        closest = list(closest['INSTNM'][1:5])
         closest_list += closest
 
     result = top_five(closest_list, colleges)
