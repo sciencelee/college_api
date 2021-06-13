@@ -5,12 +5,14 @@ import pickle
 import scipy.spatial.distance as distance
 from collections import Counter
 import sys
+from flask_cors import CORS, cross_origin
 
 
 
 # create app
 app = Flask(__name__, static_folder='static')
-
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 # load "model" data
 import pandas as pd
@@ -33,12 +35,12 @@ def predict():
         college_id = get_index(college)
         test_college = df_scaled.iloc[[college_id]]
 
-        ary = distance.cdist(df_scaled, test_college, metric='euclidean')
+        ary = distance.cdist(df_scaled, test_college, metric='minkowski')
 
         results = df_final.copy() # different results
         results['dist'] = ary
         closest = results.sort_values(by='dist')
-        closest = list(closest['INSTNM'][1:5])
+        closest = list(closest['INSTNM'][1:4])
         closest_list += closest
 
     result = top_five(closest_list, colleges)
