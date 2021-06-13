@@ -60,9 +60,9 @@ def predict():
 
         output['results'].append(school)
     response = jsonify(output)
-    # response.headers.add("Access-Control-Allow-Origin", "*")
-    # response.headers.add("Access-Control-Allow-Headers", "*")
-    # response.headers.add("Access-Control-Allow-Methods", "*")
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    response.headers.add("Access-Control-Allow-Headers", "*")
+    response.headers.add("Access-Control-Allow-Methods", "*")
 
     return response
 
