@@ -4,10 +4,12 @@ import json
 import pickle
 import scipy.spatial.distance as distance
 import json
+from flask_cors import CORS, cross_origin
+
 
 # create app
 app = Flask(__name__, static_folder='static')
-
+CORS(app)
 
 # load "model" data
 df_final = pickle.load(open('static/df_final_names.pkl', 'rb'))
@@ -16,6 +18,7 @@ df_scaled = pickle.load(open('static/scaled_df.pkl', 'rb'))
 
 # routes
 @app.route('/model/', methods=['POST', 'GET'])
+@cross_origin()
 def predict():
     # get data
     data = request.get_json()[0]
