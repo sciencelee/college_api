@@ -12,7 +12,8 @@ from flask_cors import CORS, cross_origin
 # create app
 app = Flask(__name__, static_folder='static')
 cors = CORS(app)
-app.config['CORS_HEADERS'] = 'Content-Type'
+#app.config['CORS_HEADERS'] = 'Content-Type'
+cors = CORS(app, resources={r"/api/": {"origins": ""}})
 
 # load "model" data
 import pandas as pd
