@@ -19,11 +19,10 @@ df_scaled = pickle.load(open('static/scaled_df.pkl', 'rb'))
 
 
 # routes
-@app.route('/model/', methods=['POST', 'OPTIONS'])
+@app.route('/model/', methods=['POST'])
 @flask_cors.cross_origin()
 def predict():
-    if request.method == "OPTIONS":  # CORS preflight
-        return _build_cors_prelight_response()
+
 
     # get data
     data = request.get_json()[0]
@@ -62,8 +61,11 @@ def predict():
                 }
 
         output['results'].append(school)
-
-    return jsonify(output)
+    response = make_response(jsonify(output))
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    response.headers.add("Access-Control-Allow-Headers", "*")
+    response.headers.add("Access-Control-Allow-Methods", "*")
+    return response
 
 
 @app.route('/colleges/', methods=['GET'])
