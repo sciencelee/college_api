@@ -9,7 +9,7 @@ import flask_cors
 # create app
 app = Flask(__name__, static_folder='static')
 #cors = flask_cors.CORS(app, resources={r"/api/*": {"origins": "*"}})
-cors = flask_cors.CORS(app)
+#cors = flask_cors.CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 
@@ -63,7 +63,7 @@ def predict():
 
         output['results'].append(school)
 
-    return _build_cors_prelight_response(jsonify(output))
+    return jsonify(output)
 
 
 @app.route('/colleges/', methods=['GET'])
@@ -84,8 +84,8 @@ def get_index(college):
     college_id = college_id.index.to_list()[0]
     return int(college_id)
 
-def _build_cors_prelight_response(output):
-    response = make_response(output)
+def _build_cors_prelight_response():
+    response = make_response()
     response.headers.add("Access-Control-Allow-Origin", "*")
     response.headers.add("Access-Control-Allow-Headers", "*")
     response.headers.add("Access-Control-Allow-Methods", "*")
