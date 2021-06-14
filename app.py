@@ -64,6 +64,7 @@ def predict():
                 #'control': stats['CONTROL'],
                 'avg_tuition': stats['COSTT4_A'],
                 'admission_rate': stats['ADM_RATE'],
+                #'percent_match': results[results['INSTNM']==college]['dist']
                 }
 
         output['results'].append(school)
