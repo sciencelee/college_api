@@ -29,20 +29,24 @@ def predict():
     data = request.get_json()[0]
     colleges = [data['dream'], data['target'], data['safety'] ]
 
+    tops = []
     closest_list = []
     for i, college in enumerate(colleges):
         college_id = get_index(college)
         test_college = df_scaled.iloc[[college_id]]
 
-        ary = distance.cdist(df_scaled, test_college, metric='euclidean')
+        ary = distance.cdist(df_scaled, test_college, metric='minkowski')
 
         results = df_final.copy() # different results
         results['dist'] = ary
         closest = results.sort_values(by='dist')
         closest = list(closest['INSTNM'][1:5])
         closest_list += closest
+        tops += closest[:2]
 
-    result = top_five(closest_list, colleges)
+    result = dupes(closest_list, colleges)
+    result = result + tops  # duplicates first, then top results starting with dream school
+    result = result[:5]
 
     output = {}
     output['results'] = []
@@ -73,11 +77,11 @@ def colleges():
     return data
 
 
-def top_five(all3, original):
+def dupes(all3, original):
     all3 = [x for x in all3 if x not in original]
     my_counts = sorted([[x, all3.count(x)] for x in set(all3)], key=lambda x: x[1])
-    top_five = [x[0] for x in my_counts][:5]
-    return top_five
+    dupes = [x[0] for x in my_counts if x[1]>1]
+    return dupes
 
 def get_index(college):
     college_id = df_final[df_final['INSTNM'] == college]  # test it out
