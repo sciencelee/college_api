@@ -46,8 +46,8 @@ def predict():
 
     tops = [x for x in tops if x not in colleges]
     result = dupes(closest_list, colleges)
+    tops = [x for x in tops if x not in result]
     result = result + tops  # duplicates first, then top results starting with dream school
-    #result = list(dict.fromkeys(result)) #remove dupe, preserve order
     result = result[:5]
 
     output = {}
