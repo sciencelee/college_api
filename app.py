@@ -31,6 +31,8 @@ def predict():
 
     tops = []
     closest_list = []
+
+
     for i, college in enumerate(colleges):
         college_id = get_index(college)
         test_college = df_scaled.iloc[[college_id]]
