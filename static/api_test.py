@@ -5,9 +5,9 @@ import json
 
 school_data = [
     {
-        'dream':'Loyola University Chicago',
-        'target':'DePaul University',
-        'safety':'University of Illinois at Urbana-Champaign'
+        "dream":"Loyola University Chicago",
+        "target":"DePaul University",
+        "safety":"University of Illinois at Urbana-Champaign"
     },
 ]
 
