@@ -71,8 +71,8 @@ def predict():
                 }
 
         output['results'].append(school)
-
-    return corsify_response(jsonify(output))
+    cors_response = corsify_response(jsonify(output))
+    return jsonify(output)
 
 
 @app.route('/colleges/', methods=['GET'])
