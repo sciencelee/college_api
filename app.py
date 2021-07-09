@@ -101,7 +101,7 @@ def _build_cors_prelight_response():
     return response
 
 def corsify_response(response):
-    response.headers.add("Access-Control-Allow-Origin", "*")
+    #response.headers.add("Access-Control-Allow-Origin", "*")
     return response
 
 # A welcome message to test our server
