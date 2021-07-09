@@ -96,8 +96,8 @@ def get_index(college):
 def _build_cors_prelight_response():
     response = make_response()
     response.headers.add("Access-Control-Allow-Origin", "*")
-    # response.headers.add("Access-Control-Allow-Headers", "*")
-    # response.headers.add("Access-Control-Allow-Methods", "*")
+    response.headers.add("Access-Control-Allow-Headers", "*")
+    response.headers.add("Access-Control-Allow-Methods", "*")
     return response
 
 # def corsify_response(response):
