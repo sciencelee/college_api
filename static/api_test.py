@@ -33,7 +33,12 @@ print(colleges.text)
 with open('static/card_info.txt') as f:
     card_dict = json.load(f)
 
-print(card_dict)
-print()
-print(card_dict['University of Alabama at Birmingham'].get('image'))
+# print(card_dict)
 
+# count = 0
+# for college in card_dict.keys():
+#     if card_dict[college].get('description'): count += 1
+#
+# print(count)
+
+print(card_dict['The University of Alabama'].get('image'))

@@ -6,7 +6,6 @@ import scipy.spatial.distance as distance
 import json
 import flask_cors
 import pandas as pd
-from bs4 import BeautifulSoup #Import stuff
 
 
 # create app
@@ -76,9 +75,10 @@ def predict():
                 #'percent_match': results[results['INSTNM']==college]['dist']
                 }
         image = card_dict[college].get('image')
-        desc = card_dict[college].get('description'),
+        desc = card_dict[college].get('description')
         if image: school['image'] = image
         if desc: school['description'] = desc
+
         output['results'].append(school)
     #cors_response = corsify_response(jsonify(output))
     return jsonify(output)
