@@ -73,10 +73,10 @@ def predict():
                 #'control': stats['CONTROL'],
                 'avg_tuition': stats['COSTT4_A'],
                 'admission_rate': stats['ADM_RATE'],
-                'image': card_dict[college].get('image'),
-                'description': card_dict[college].get('description'),
                 #'percent_match': results[results['INSTNM']==college]['dist']
                 }
+        #image = card_dict[college].get('image')
+        #desc = card_dict[college].get('description'),
 
         output['results'].append(school)
     #cors_response = corsify_response(jsonify(output))
