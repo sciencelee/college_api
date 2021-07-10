@@ -30,4 +30,8 @@ print(colleges.text)
 # home = requests.get(url3)
 # print(home.text)
 
+with open('static/card_info.txt') as f:
+    card_dict = json.load(f)
+
+print(card_dict)
 
