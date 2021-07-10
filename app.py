@@ -5,6 +5,9 @@ import pickle
 import scipy.spatial.distance as distance
 import json
 import flask_cors
+import pandas as pd
+from bs4 import BeautifulSoup #Import stuff
+
 
 # create app
 app = Flask(__name__, static_folder='static')
@@ -16,7 +19,7 @@ cors = flask_cors.CORS(app)
 # load "model" data
 df_final = pickle.load(open('static/df_final_names.pkl', 'rb'))
 df_scaled = pickle.load(open('static/scaled_df.pkl', 'rb'))
-
+df_card = pd.read_json('card_info.txt')
 
 # routes
 @app.route('/model/', methods=['POST', 'OPTIONS'])
@@ -108,6 +111,9 @@ def _build_cors_prelight_response():
 @app.route('/')
 def index():
     return "<h1>College rec server</h1>"
+
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
