@@ -77,7 +77,8 @@ def predict():
                 }
         #image = card_dict[college].get('image')
         #desc = card_dict[college].get('description'),
-
+        #if image: school['image'] = image
+        #if desc: school['description'] = desc
         output['results'].append(school)
     #cors_response = corsify_response(jsonify(output))
     return jsonify(output)
