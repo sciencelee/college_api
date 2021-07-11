@@ -19,7 +19,7 @@ cors = flask_cors.CORS(app)
 df_final = pickle.load(open('static/df_final_names.pkl', 'rb'))
 df_scaled = pickle.load(open('static/scaled_df.pkl', 'rb'))
 
-with open('static/card_info.txt') as f:
+with open('static/card_info_google.txt') as f:
     card_dict = json.load(f)
 
 

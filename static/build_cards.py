@@ -25,6 +25,8 @@ names = list(df['INSTNM'])
 # Create a new Firefox browser object
 browser = webdriver.Chrome('/Users/aaronlee/PycharmProjects/college_api/chromedriver')
 
+
+
 def which_url(base_url):
     url = base_url
 
