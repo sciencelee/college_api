@@ -72,4 +72,5 @@ df_final = pickle.load(open('static/df_final_names.pkl', 'rb'))
 df_scaled = pickle.load(open('static/scaled_df.pkl', 'rb'))
 
 print(df_final.head())
-print(df_scaled.head())
+print(df_final.columns)
+print(df_final['CONTROL'].info())

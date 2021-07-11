@@ -158,7 +158,13 @@ def predict():
     for college in result:
         i = get_index(college)
         stats = df_final.iloc[i]
-        control = 'Private'
+
+        control = 'Public'
+        if stats['CONTROL'] == 1:
+            control = 'Public'
+        else:
+            control = 'Private'
+
         school = {
                 'schoolname': stats['INSTNM'],
                 'url': stats['INSTURL'],
@@ -166,7 +172,7 @@ def predict():
                 'stabbr': stats['STABBR'],
                 'state': states_dict[stats['STABBR']],
                 'student_pop': stats['UGDS'],
-                #'control': stats['CONTROL'],
+                'control': control,
                 'avg_tuition': stats['COSTT4_A'],
                 'admission_rate': stats['ADM_RATE'],
                 'avg_ACT': stats['ACTCMMID'],  # not in the df_final_names unfortunately.  Need to redo
