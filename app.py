@@ -65,7 +65,7 @@ def predict():
     result = dupes(closest_list, colleges)
     tops = [x for x in tops if x not in result]
     result = result + tops  # duplicates first, then top results starting with dream school #1
-    result = result[:5]
+    #result = result[:5]
 
     output = {}
     output['results'] = []
@@ -83,6 +83,8 @@ def predict():
                 #'control': stats['CONTROL'],
                 'avg_tuition': stats['COSTT4_A'],
                 'admission_rate': stats['ADM_RATE'],
+                'avg_ACT': stats['ACTCMMID'],
+                'avg_SAT': stats['SAT_AVG'],
                 #'percent_match': results[results['INSTNM']==college]['dist']
                 }
         image = card_dict[college].get('image')
