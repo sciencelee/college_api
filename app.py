@@ -59,7 +59,7 @@ def predict():
         closest = results.sort_values(by='dist')
         closest = list(closest['INSTNM'])[1:5]
         closest_list += closest
-        tops = tops + [closest[0]]
+        tops = [closest[0]] + tops
 
     # now check out a combo of all three schools
     combo_school = df_scaled.iloc[ids].mean()
@@ -67,7 +67,7 @@ def predict():
     results = df_final.copy()
     results['dist'] = ary
     closest = results.sort_values(by='dist')
-    closest = list(closest['INSTNM'][1:5])
+    closest = list(closest['INSTNM'])[1:5]
     closest_list += closest
     tops = [closest[0]] + tops
 
