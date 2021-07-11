@@ -167,6 +167,9 @@ def predict():
             control = 'Public'
         else:
             control = 'Private'
+        religion = stats['RELAFFIL']
+        if religion not in ['No data available']:
+            religion = religious_affil[int(religion)],
 
         school = {
                 'schoolname': stats['INSTNM'],
@@ -180,7 +183,7 @@ def predict():
                 'admission_rate': stats['ADM_RATE'],
                 'avg_ACT': stats['ACTCMMID'],  # not in the df_final_names unfortunately.  Need to redo
                 'avg_SAT': stats['SAT_AVG'],
-                'religious_affil': religious_affil[int(stats['RELAFFIL'])],
+                'religious_affil': religion,
                 'HBCU': stats['HBCU'],
                 'WOMENONLY': stats['WOMENONLY'],
                 'MENONLY': stats['MENONLY'],
