@@ -41,7 +41,6 @@ def predict():
     closest_list = []
     ids = []
 
-    first = True
     for i, college in enumerate(colleges):
         college_id = get_index(college)
 
@@ -61,12 +60,8 @@ def predict():
         closest = list(closest['INSTNM'])[1:5]
         closest_list += closest
 
+        tops = closest[:2] + tops
 
-        if first:
-            first = False
-            tops = closest[:2] + tops
-        else:
-            tops = tops + closest[0]
 
     # # now check out a combo of all three schools
     # mean_school = list(df_scaled.iloc[ids].mean())
@@ -84,7 +79,6 @@ def predict():
     result = dupes(closest_list, colleges)
     tops = [x for x in tops if x not in result]
     result = result + tops  # duplicates first, then top results starting with dream school #1
-    #result = result[:5]
 
     output = {}
     output['results'] = []
