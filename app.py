@@ -41,6 +41,7 @@ def predict():
     closest_list = []
     ids = []
 
+    first = True
     for i, college in enumerate(colleges):
         college_id = get_index(college)
 
@@ -57,9 +58,13 @@ def predict():
 
         # sort them so we can examine top matches
         closest = results.sort_values(by='dist')
-        closest = list(closest['INSTNM'])[1:5]
+        closest = list(closest['INSTNM'])[1:8]
         closest_list += closest
-        tops = [closest[0]] + tops
+        if first:
+            first = False
+            tops = [closest[:2]] + tops
+        else:
+            tops = tops + [closest[0]]
 
     # now check out a combo of all three schools
     mean_school = list(df_scaled.iloc[ids].mean())
@@ -70,7 +75,7 @@ def predict():
     closest = results.sort_values(by='dist')
     closest = list(closest['INSTNM'])[1:5]
     closest_list += closest
-    tops = [closest[0]] + tops
+    tops = [closest[:2]] + tops
 
 
     tops = [x for x in tops if x not in colleges]
