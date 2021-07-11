@@ -15,8 +15,8 @@ school_data = [
     },
 ]
 
-url = 'https://college-rec-system.herokuapp.com/model/'
-#url = 'http://127.0.0.1:5000/model/'
+#url = 'https://college-rec-system.herokuapp.com/model/'
+url = 'http://127.0.0.1:5000/model/'
 
 data = requests.post(url, json=school_data)
 print(data.text)
