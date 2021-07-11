@@ -43,21 +43,28 @@ def predict():
 
     for i, college in enumerate(colleges):
         college_id = get_index(college)
+
+        # get scaled data for this college
         test_college = df_scaled.iloc[[college_id]]
 
-        ary = distance.cdist(df_scaled, test_college, metric='minkowski')
+        # get scaled distance from every other college (manhattan or minkowski seem best)
+        ary = distance.cdist(df_scaled, test_college, metric='manhattan')
 
+        # make a df with distances to manipulate for this school
         results = df_final.copy() # different results
         results['dist'] = ary
+
+        # sort them so we can examine top matches
         closest = results.sort_values(by='dist')
         closest = list(closest['INSTNM'][1:5])
         closest_list += closest
-        tops += closest[:2]
+        tops = tops + closest[-1]
+        tops = closest[0] + tops
 
     tops = [x for x in tops if x not in colleges]
     result = dupes(closest_list, colleges)
     tops = [x for x in tops if x not in result]
-    result = result + tops  # duplicates first, then top results starting with dream school
+    result = result + tops  # duplicates first, then top results starting with dream school #1
     result = result[:5]
 
     output = {}
@@ -95,9 +102,12 @@ def colleges():
     return data
 
 
-def dupes(all3, original):
-    all3 = [x for x in all3 if x not in original]
-    my_counts = sorted([[x, all3.count(x)] for x in set(all3)], key=lambda x: x[1])
+def dupes(all, original):
+    # returns list of schools found in closest matches for multiple input schools
+    # all is a list of schools that were matches
+    # original is a list of the schools that were original inputs from user
+    all = [x for x in all if x not in original]  # dump any that are part of original list (there is better way to do this)
+    my_counts = sorted([[x, all.count(x)] for x in set(all)], key=lambda x: x[1])  # get sorted list by number of times they occur in list
     dupes = [x[0] for x in my_counts if x[1]>1]
     return dupes
 
@@ -121,8 +131,6 @@ def _build_cors_prelight_response():
 @app.route('/')
 def index():
     return "<h1>College rec server</h1>"
-
-
 
 
 if __name__ == '__main__':
