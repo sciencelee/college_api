@@ -60,10 +60,8 @@ def predict():
         closest = list(closest['INSTNM'])[1:5]
         closest_list += closest
 
-        if i == 0:
-            tops = closest[:2] + tops
-        else:
-            tops = tops + [closest[0]]
+
+        tops = tops + [closest[0]]
 
 
     # now check out a combo of all three schools
@@ -75,7 +73,7 @@ def predict():
     closest = results.sort_values(by='dist')
     closest = list(closest['INSTNM'])[1:5]
     closest_list += closest
-    tops = [closest[:2]] + tops
+    tops = closest[:2] + tops
 
 
     tops = [x for x in tops if x not in colleges]
