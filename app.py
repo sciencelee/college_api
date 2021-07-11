@@ -56,7 +56,7 @@ def predict():
 
         # sort them so we can examine top matches
         closest = results.sort_values(by='dist')
-        closest = list(closest['INSTNM'][1:5])
+        closest = list(closest['INSTNM'])[1:5]
         closest_list += closest
         tops = tops + [closest[1]]
         tops = [closest[0]] + tops
@@ -83,7 +83,7 @@ def predict():
                 #'control': stats['CONTROL'],
                 'avg_tuition': stats['COSTT4_A'],
                 'admission_rate': stats['ADM_RATE'],
-                #'avg_ACT': stats['ACTCMMID'],
+                #'avg_ACT': stats['ACTCMMID'],  # not in the df_final_names unfortunately.  Need to redo
                 # 'avg_SAT': stats['SAT_AVG'],
                 #'percent_match': results[results['INSTNM']==college]['dist']
                 }
