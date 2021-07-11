@@ -63,7 +63,7 @@ def predict():
         if i == 0:
             tops = closest[:2] + tops
         else:
-            tops = [closest[0]] + tops
+            tops = tops + [closest[0]]
 
 
     # now check out a combo of all three schools
