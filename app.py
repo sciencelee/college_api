@@ -96,7 +96,7 @@ def predict():
                 'stabbr': stats['STABBR'],
                 'state': states_dict[stats['STABBR']],
                 'student_pop': stats['UGDS'],
-                'control': stats['CONTROL'],
+                #'control': stats['CONTROL'],
                 'avg_tuition': stats['COSTT4_A'],
                 'admission_rate': stats['ADM_RATE'],
                 'avg_ACT': stats['ACTCMMID'],  # not in the df_final_names unfortunately.  Need to redo
