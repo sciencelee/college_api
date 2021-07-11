@@ -106,6 +106,8 @@ def predict():
         if desc: school['description'] = desc
 
         output['results'].append(school)
+
+    output['results'] = sorted(output['results'], lambda x: x['student_pop'])
     #cors_response = corsify_response(jsonify(output))
     return jsonify(output)
 
