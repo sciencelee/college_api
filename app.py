@@ -83,7 +83,7 @@ def predict():
                 #'control': stats['CONTROL'],
                 'avg_tuition': stats['COSTT4_A'],
                 'admission_rate': stats['ADM_RATE'],
-                # 'avg_ACT': stats['ACTCMMID'],
+                'avg_ACT': stats['ACTCMMID'],
                 # 'avg_SAT': stats['SAT_AVG'],
                 #'percent_match': results[results['INSTNM']==college]['dist']
                 }
