@@ -173,7 +173,7 @@ def predict():
                 'avg_SAT': stats['SAT_AVG'],
                 #'religious_affil': religious_affil[stats['RELAFFIL']],
                 'HBCU': stats['HBCU'],
-                #'WOMENONLY': stats['WOMENONLY'],
+                'WOMENONLY': stats['WOMENONLY'],
                 #'MENONLY': stats['MENONLY'],
 
                 #'percent_match': results[results['INSTNM']==college]['dist']
