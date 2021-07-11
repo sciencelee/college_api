@@ -42,3 +42,9 @@ with open('static/card_info.txt') as f:
 # print(count)
 
 print(card_dict['The University of Alabama'].get('image'))
+
+
+print('Trying combo school')
+df_scaled = pickle.load(open('static/scaled_df.pkl', 'rb'))
+print(df_scaled.iloc[[1,2,3]])
+print(list(df_scaled.iloc[[1,2,3]].mean()))

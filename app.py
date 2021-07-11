@@ -39,13 +39,14 @@ def predict():
 
     tops = []
     closest_list = []
-
+    ids = []
 
     for i, college in enumerate(colleges):
         college_id = get_index(college)
 
         # get scaled data for this college
         test_college = df_scaled.iloc[[college_id]]
+        ids.append(college_id)
 
         # get scaled distance from every other college (manhattan or minkowski seem best)
         ary = distance.cdist(df_scaled, test_college, metric='cityblock')
@@ -58,8 +59,18 @@ def predict():
         closest = results.sort_values(by='dist')
         closest = list(closest['INSTNM'])[1:5]
         closest_list += closest
-        tops = tops + [closest[1]]
-        tops = [closest[0]] + tops
+        tops = tops + [closest[0]]
+
+    # now check out a combo of all three schools
+    combo_school = list(df_scaled.iloc[ids].mean())
+    ary = distance.cdist(df_scaled, combo_school, metric='cityblock')
+    results = df_final.copy()
+    results['dist'] = ary
+    closest = results.sort_values(by='dist')
+    closest = list(closest['INSTNM'][1:5])
+    closest_list += closest
+    tops = [closest[0]] + tops
+
 
     tops = [x for x in tops if x not in colleges]
     result = dupes(closest_list, colleges)
