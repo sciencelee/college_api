@@ -48,7 +48,7 @@ def predict():
         test_college = df_scaled.iloc[[college_id]]
 
         # get scaled distance from every other college (manhattan or minkowski seem best)
-        ary = distance.cdist(df_scaled, test_college, metric='minkowski')
+        ary = distance.cdist(df_scaled, test_college, metric='manhattan')
 
         # make a df with distances to manipulate for this school
         results = df_final.copy() # different results
