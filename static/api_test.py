@@ -31,8 +31,17 @@ print(colleges.text)
 # home = requests.get(url3)
 # print(home.text)
 
-with open('static/card_info.txt') as f:
-    card_dict = json.load(f)
+
+
+
+
+
+#####
+# TEST code
+####
+
+# with open('static/card_info.txt') as f:
+#     card_dict = json.load(f)
 
 # print(card_dict)
 
@@ -42,19 +51,19 @@ with open('static/card_info.txt') as f:
 #
 # print(count)
 
-print(card_dict['The University of Alabama'].get('image'))
+# print(card_dict['The University of Alabama'].get('image'))
+#
 
-
-print('Trying combo school')
-df_scaled = pickle.load(open('static/scaled_df.pkl', 'rb'))
-print('single school')
-print(df_scaled.iloc[[1]])
-
-print()
-print('three schools')
-print(df_scaled.iloc[[1,2,3]])
-
-print()
-print('combo schools')
-mean_row = list(df_scaled.iloc[[1,2,3]].mean())
-print(pandas.DataFrame([mean_row], columns=df_scaled.columns))
+# print('Trying combo school')
+# df_scaled = pickle.load(open('static/scaled_df.pkl', 'rb'))
+# print('single school')
+# print(df_scaled.iloc[[1]])
+#
+# print()
+# print('three schools')
+# print(df_scaled.iloc[[1,2,3]])
+#
+# print()
+# print('combo schools')
+# mean_row = list(df_scaled.iloc[[1,2,3]].mean())
+# print(pandas.DataFrame([mean_row], columns=df_scaled.columns))
