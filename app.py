@@ -22,6 +22,9 @@ df_scaled = pickle.load(open('static/scaled_df.pkl', 'rb'))
 with open('static/card_info_google.txt') as f:
     card_dict = json.load(f)
 
+with open('static/states.txt') as f:
+    states_dict = json.load(f)
+
 
 # routes
 @app.route('/model/', methods=['POST', 'OPTIONS'])
@@ -67,7 +70,8 @@ def predict():
                 'schoolname': stats['INSTNM'],
                 'url': stats['INSTURL'],
                 'city': stats['CITY'],
-                'state': stats['STABBR'],
+                'stabbr': stats['STABBR'],
+                'state': states_dict[stats['STABBR']],
                 'student_pop': stats['UGDS'],
                 #'control': stats['CONTROL'],
                 'avg_tuition': stats['COSTT4_A'],
