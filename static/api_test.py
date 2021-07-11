@@ -67,3 +67,9 @@ print(colleges.text)
 # print('combo schools')
 # mean_row = list(df_scaled.iloc[[1,2,3]].mean())
 # print(pandas.DataFrame([mean_row], columns=df_scaled.columns))
+
+df_final = pickle.load(open('static/df_final_names.pkl', 'rb'))
+df_scaled = pickle.load(open('static/scaled_df.pkl', 'rb'))
+
+print(df_final.head())
+print(df_scaled.head())

@@ -37,7 +37,7 @@ def predict():
 
     # get data
     data = request.get_json()[0]
-    colleges = [data['dream'], data['target'], data['safety'] ]
+    colleges = [data['dream'], data['target'], data['safety']]
 
     tops = []
     closest_list = []
