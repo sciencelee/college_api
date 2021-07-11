@@ -58,8 +58,8 @@ def predict():
         closest = results.sort_values(by='dist')
         closest = list(closest['INSTNM'][1:5])
         closest_list += closest
-        tops = tops + closest[-1]
-        tops = closest[0] + tops
+        tops = tops + [closest[1]]
+        tops = [closest[0]] + tops
 
     tops = [x for x in tops if x not in colleges]
     result = dupes(closest_list, colleges)
