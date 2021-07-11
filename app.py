@@ -89,6 +89,9 @@ cors = flask_cors.CORS(app)
 
 # load "model" data
 df_final = pickle.load(open('static/df_final_names.pkl', 'rb'))
+df_final = df_final.loc[:,~df_final.columns.duplicated()]
+
+
 df_scaled = pickle.load(open('static/scaled_df.pkl', 'rb'))
 
 with open('static/card_info_google.txt') as f:
