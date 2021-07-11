@@ -64,13 +64,13 @@ def predict():
     # now check out a combo of all three schools
     mean_school = list(df_scaled.iloc[ids].mean())
     combo_school = pd.DataFrame([mean_school], columns=df_scaled.columns)
-    # ary = distance.cdist(df_scaled, combo_school, metric='cityblock')
-    # results = df_final.copy()
-    # results['dist'] = ary
-    # closest = results.sort_values(by='dist')
-    # closest = list(closest['INSTNM'])[1:5]
-    # closest_list += closest
-    # tops = [closest[0]] + tops
+    ary = distance.cdist(df_scaled, combo_school, metric='cityblock')
+    results = df_final.copy()
+    results['dist'] = ary
+    closest = results.sort_values(by='dist')
+    closest = list(closest['INSTNM'])[1:5]
+    closest_list += closest
+    tops = [closest[0]] + tops
 
 
     tops = [x for x in tops if x not in colleges]
