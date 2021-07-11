@@ -70,7 +70,7 @@ def predict():
     results = df_final.copy()
     results['dist'] = ary
     closest = results.sort_values(by='dist')
-    closest = list(closest['INSTNM'])[1:5]
+    closest = list(closest['INSTNM'])[1:10]
     closest_list += closest
     tops = closest[:2] + tops
 
@@ -107,7 +107,7 @@ def predict():
 
         output['results'].append(school)
 
-    #output['results'] = sorted(output['results'], lambda x: x['student_pop'])
+    # output['results'] = sorted(output['results'], lambda x: x['student_pop'])
     #cors_response = corsify_response(jsonify(output))
     return jsonify(output)
 
