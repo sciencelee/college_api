@@ -61,14 +61,12 @@ def predict():
         closest = list(closest['INSTNM'])[1:5]
         closest_list += closest
 
-        tops = [closest[:2]] + tops
-        tops = tops + [closest[0]]
 
-        # if first:
-        #     first = False
-        #     tops = [closest[:2]] + tops
-        # else:
-        #     tops = tops + [closest[0]]
+        if first:
+            first = False
+            tops = closest[:2] + tops
+        else:
+            tops = tops + closest[0]
 
     # # now check out a combo of all three schools
     # mean_school = list(df_scaled.iloc[ids].mean())
