@@ -171,10 +171,10 @@ def predict():
                 'admission_rate': stats['ADM_RATE'],
                 'avg_ACT': stats['ACTCMMID'],  # not in the df_final_names unfortunately.  Need to redo
                 'avg_SAT': stats['SAT_AVG'],
-                'religious_affil': religious_affil[stats['RELAFFIL']],
-                'HBCU': stats['HBCU'],
-                'WOMENONLY': stats['WOMENONLY'],
-                'MENONLY': stats['MENONLY'],
+                #'religious_affil': religious_affil[stats['RELAFFIL']],
+                #'HBCU': stats['HBCU'],
+                #'WOMENONLY': stats['WOMENONLY'],
+                #'MENONLY': stats['MENONLY'],
 
                 #'percent_match': results[results['INSTNM']==college]['dist']
                 }
