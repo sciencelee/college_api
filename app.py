@@ -62,7 +62,8 @@ def predict():
         tops = [closest[0]] + tops
 
     # now check out a combo of all three schools
-    combo_school = df_scaled.iloc[ids].mean()
+    combo_school = list(df_scaled.iloc[ids].mean())
+    print(pd.DataFrame([combo_school], columns=df_scaled.columns))
     ary = distance.cdist(df_scaled, combo_school, metric='cityblock')
     results = df_final.copy()
     results['dist'] = ary
