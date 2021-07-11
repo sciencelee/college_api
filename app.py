@@ -57,9 +57,8 @@ def predict():
 
         # sort them so we can examine top matches
         closest = results.sort_values(by='dist')
-        closest = list(closest['INSTNM'])[1:5]
+        closest = list(closest['INSTNM'])[1:8]
         closest_list += closest
-
 
         tops = tops + [closest[0]]
 
