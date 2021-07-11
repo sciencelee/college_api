@@ -60,7 +60,10 @@ def predict():
         closest = list(closest['INSTNM'])[1:5]
         closest_list += closest
 
-        tops = closest[:2] + tops
+        if i == 0:
+            tops = closest[:2] + tops
+        else:
+            tops = [closest[0]] + tops
 
 
     # # now check out a combo of all three schools
