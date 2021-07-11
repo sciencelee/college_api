@@ -48,7 +48,7 @@ def predict():
         test_college = df_scaled.iloc[[college_id]]
 
         # get scaled distance from every other college (manhattan or minkowski seem best)
-        ary = distance.cdist(df_scaled, test_college, metric='minkowski')
+        ary = distance.cdist(df_scaled, test_college, metric='cityblock')
 
         # make a df with distances to manipulate for this school
         results = df_final.copy() # different results
@@ -83,8 +83,8 @@ def predict():
                 #'control': stats['CONTROL'],
                 'avg_tuition': stats['COSTT4_A'],
                 'admission_rate': stats['ADM_RATE'],
-                'avg_ACT': stats['ACTCMMID'],
-                'avg_SAT': stats['SAT_AVG'],
+                # 'avg_ACT': stats['ACTCMMID'],
+                # 'avg_SAT': stats['SAT_AVG'],
                 #'percent_match': results[results['INSTNM']==college]['dist']
                 }
         image = card_dict[college].get('image')
