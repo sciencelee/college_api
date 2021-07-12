@@ -167,9 +167,10 @@ def predict():
             control = 'Public'
         else:
             control = 'Private'
+
         rel_n = stats['RELAFFIL']
         if rel_n not in ['No data available']:
-            religion = religious_affil[int(religion)]
+            religion = religious_affil[int(rel_n)]
         else:
             religion = 0
 
