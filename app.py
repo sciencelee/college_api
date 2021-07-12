@@ -202,7 +202,7 @@ def predict():
 
     #output['results'] = sorted(output['results'], lambda x: x['student_pop'])
 
-    output['results'] = sorted(output['results'], key=lambda x: (x['avg_SAT'], x['avg_ACT']), reverse=True)
+    output['results'] = sorted(output['results'], key=lambda x: (x.get('avg_SAT'), x.get('avg_ACT')), reverse=True)
 
     #cors_response = corsify_response(jsonify(output))
     return jsonify(output)
