@@ -147,7 +147,7 @@ def predict():
     closest = results.sort_values(by='dist')
     closest = list(closest['INSTNM'])[1:10]
     closest_list += closest
-    tops = closest[:2] + tops
+    tops = closest[:1] + tops
 
 
     tops = [x for x in tops if x not in colleges]
