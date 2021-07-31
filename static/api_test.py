@@ -11,6 +11,7 @@ school_data = [
     {
         #"dream":"Loyola University Chicago",
         "target":"DePaul University",
+        'safety': ''
         #"safety":"University of Illinois at Urbana-Champaign"
     },
 ]
